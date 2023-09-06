@@ -1,0 +1,32 @@
+<form [formGroup]="formGroup" class="form-layout-grid">
+  <div class="row">
+    <input
+      required
+      type="text"
+      placeholder=""
+      formControlName="firstName"
+      maxlength="25"
+    />
+  </div>
+  <div class="row">
+    <input
+      required
+      type="text"
+      placeholder=""
+      formControlName="lastName"
+      maxlength="25"
+    />
+  </div>
+  <div class="row">
+    <input type="text" placeholder="" formControlName="email" />
+  </div>
+</form>
+
+<div class="row">
+  <button
+    type="button"
+    (click)="onSave()"
+  >
+    Save
+  </button>
+</div>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Listener App</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <script>
+    window.addEventListener("message",
+      function (e) {
+        if (e.origin !== 'http://localhost:4200') return;
+        this.setData(e.data);
+      },
+      false);
+
+    function setData(model) {
+      if (model.id != null) {
+        document.getElementById("firstName").value = model.firstName;
+        document.getElementById("lastName").value = model.lastName;
+      }
+    }
+
+    function onButtonClick() {
+      const popup = window.open('http://localhost:4200/test-dialog', 'test dialog', 'width=800,height=600,location=yes');
+      // send data to popup angular app:
+      // popup.postMessage("some value", "*");
+    }
+  </script>
+
+  <p>
+    <input id="firstName" type="text">
+  </p>
+  <p>
+    <input id="lastName" type="text">
+  </p>
+  <button id="button" onclick="onButtonClick()" type="button">Open</button>
+
+  <app-root></app-root>
+</body>
+</html>
